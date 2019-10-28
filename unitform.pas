@@ -60,31 +60,3 @@ procedure TProfileForm.OnClosing(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
-
-procedure TForm1.FormShow(Sender: TObject);
-const BoolToStr : array[boolean] of String = ('No','Yes');
-var
-  sl : TStringList;
-  s,r : boolean;
-  I: Integer;
-  Item : TListItem;
-begin
-  ModemIni := TIniFile.Create(ExtractFilePath(Application.EXEName)+ 'modem.ini');
-  sl := TStringList.Create;
-  try
-      ModemIni.ReadSections('', sl);
-      for I := 0 to sl.Count-1 do
-      begin
-        Item := ListView1.Items.Add;
-        Item.Caption := '';
-        Item.SubItems.Add(sl[I]);
-        Item.SubItems.Add(ModemIni.ReadString(sl[I], 'Baudrate', '115200'));
-        Item.SubItems.Add(BoolToStr[ModemIni.ReadBool(sl[I], 'Sender', true)]);
-        Item.SubItems.Add(ModemIni.ReadString(sl[I], 'Prefix', '+62'));
-        Item.ImageIndex := 0;
-      end;
-  finally
-    sl.Free;
-  end;
-
-end;

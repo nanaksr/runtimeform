@@ -1,4 +1,4 @@
-unit Unitform;
+unit VirtualForm;
 
 interface
 
@@ -6,23 +6,22 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.IniFiles, Vcl.StdCtrls, Vcl.ComCtrls,
   System.ImageList, Vcl.ImgList, Vcl.Menus;
-  
+
 type
-  TProfileForm = class(TCustomForm)
+  TVirtualForm = class(TCustomForm)
     Btn1 : TButton;
   private
     DialogStatus: PInteger;
     procedure OnClosing(Sender : TObject; var Action: TCloseAction);
-  protected
-
+    function GetWidthText(const Text:String; Font:TFont) : Integer;
   public
     constructor Create(AOwner: TComponent);
     reintroduce;
   end;
-  
+
 implementation
 
-function GetWidthText(const Text:String; Font:TFont) : Integer;
+function TVirtualForm.GetWidthText(const Text:String; Font:TFont) : Integer;
 var
   LBmp: TBitmap;
 begin
@@ -35,7 +34,7 @@ begin
   end;
 end;
 
-constructor TProfileForm.Create(AOwner: TComponent);
+constructor TVirtualForm.Create(AOwner: TComponent);
 var
   strbtn : string;
 begin
@@ -57,7 +56,9 @@ begin
   Show;
 end;
 
-procedure TProfileForm.OnClosing(Sender: TObject; var Action: TCloseAction);
+procedure TVirtualForm.OnClosing(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
+
+end.

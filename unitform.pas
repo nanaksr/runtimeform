@@ -7,6 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.IniFiles, Vcl.StdCtrls, Vcl.ComCtrls,
   System.ImageList, Vcl.ImgList, Vcl.Menus;
   
+type
   TProfileForm = class(TCustomForm)
     Btn1 : TButton;
   private

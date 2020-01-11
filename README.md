@@ -5,15 +5,15 @@ Penggunaan
 ```
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  cstmForm : TProfileForm;
+  VirForm : TVirtualForm;
   FrmName : String;
   I: Integer;
 begin
   FrmName := 'nameform';
-  if not Assigned(FindComponent(FrmName) as TProfileForm) then
+  if not Assigned(FindComponent(FrmName) as TVirtualForm) then
   begin
-    cstmForm := TProfileForm.Create(Self);
-    cstmForm.Name := FrmName;
+    VirForm := TVirtualForm.Create(Self);
+    VirForm.Name := FrmName;
   end;
 end;
 ```
